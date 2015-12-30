@@ -1,4 +1,7 @@
+
 # crc16
+[![Build Status](https://travis-ci.org/sigurn/crc16.svg?branch=master)](https://travis-ci.org/sigurn/crc16)
+
 Go implementation of CRC-16 calculation for majority of widely-used polinomials.
 
 ## Usage
