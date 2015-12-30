@@ -19,7 +19,8 @@ func main() {
 	fmt.Printf("CRC-16 MAXIM: %X", crc)
 }
 ```
-
+## Documentation
+For more documentation see [Package Documentation](https://godoc.org/github.com/sigurn/crc16)
 ## License
 
 The MIT License (MIT)
