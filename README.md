@@ -1,6 +1,7 @@
 
 # crc16
 [![Build Status](https://travis-ci.org/sigurn/crc16.svg?branch=master)](https://travis-ci.org/sigurn/crc16)
+[![GoDoc](https://godoc.org/github.com/sigurn/crc16?status.svg)](https://godoc.org/github.com/sigurn/crc16)
 
 Go implementation of CRC-16 calculation for majority of widely-used polinomials.
 
@@ -20,7 +21,7 @@ func main() {
 }
 ```
 ## Documentation
-For more documentation see [Package Documentation](https://godoc.org/github.com/sigurn/crc16)
+For more documentation see [package documentation](https://godoc.org/github.com/sigurn/crc16)
 ## License
 
 The MIT License (MIT)
