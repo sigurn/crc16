@@ -3,7 +3,7 @@
 // It provides parameters for the majority of well-known CRC-16 algorithms.
 package crc16
 
-import "github.com/sigurn/utils"
+import "math/bits"
 
 // Params represents parameters of CRC-16 algorithms.
 // More information about algorithms parametrization and parameter descriptions
@@ -81,7 +81,7 @@ func Init(table *Table) uint16 {
 func Update(crc uint16, data []byte, table *Table) uint16 {
 	for _, d := range data {
 		if table.params.RefIn {
-			d = utils.ReverseByte(d)
+			d = bits.Reverse8(d)
 		}
 		crc = crc<<8 ^ table.data[byte(crc>>8)^d]
 	}
@@ -91,7 +91,7 @@ func Update(crc uint16, data []byte, table *Table) uint16 {
 // Complete returns the result of CRC calculation and post-calculation processing of the crc.
 func Complete(crc uint16, table *Table) uint16 {
 	if table.params.RefOut {
-		return utils.ReverseUint16(crc) ^ table.params.XorOut
+		return bits.Reverse16(crc) ^ table.params.XorOut
 	}
 	return crc ^ table.params.XorOut
 }
