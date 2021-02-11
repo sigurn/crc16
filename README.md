@@ -12,14 +12,22 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/sigurn/crc16"
 )
 
 func main() {
 	table := crc16.MakeTable(crc16.CRC16_MAXIM)
+
 	crc := crc16.Checksum([]byte("Hello world!"), table)
-	fmt.Printf("CRC-16 MAXIM: %X", crc)
+	fmt.Printf("CRC-16 MAXIM: %X\n", crc)
+
+	// using the standard library hash.Hash interface
+	h := crc16.New(table)
+	h.Write([]byte("Hello world!"))
+	fmt.Printf("CRC-16 MAXIM: %X\n", h.Sum16())
 }
 ```
+
 ## Documentation
 For more documentation see [package documentation](https://godoc.org/github.com/sigurn/crc16)
