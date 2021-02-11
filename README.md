@@ -2,7 +2,7 @@
 # crc16
 [![Build Status](https://travis-ci.org/sigurn/crc16.svg?branch=master)](https://travis-ci.org/sigurn/crc16)
 [![Coverage Status](https://coveralls.io/repos/sigurn/crc16/badge.svg?branch=master&service=github)](https://coveralls.io/github/sigurn/crc16?branch=master)
-[![GoDoc](https://godoc.org/github.com/sigurn/crc16?status.svg)](https://godoc.org/github.com/sigurn/crc16)
+[![Go Reference](https://pkg.go.dev/badge/github.com/sigurn/crc16.svg)](https://pkg.go.dev/github.com/sigurn/crc16)
 
 Go implementation of CRC-16 calculation for majority of widely-used polinomials.
 
