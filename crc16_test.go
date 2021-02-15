@@ -1,6 +1,7 @@
 package crc16
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -109,4 +110,40 @@ func TestCRC16_X_25(t *testing.T) {
 
 func TestCRC16_XMODEM(t *testing.T) {
 	testSelectedCRC(CRC16_XMODEM, t)
+}
+
+func TestHash(t *testing.T) {
+	tbl := MakeTable(CRC16_XMODEM)
+	h := New(tbl)
+
+	fmt.Fprint(h, "standard")
+	fmt.Fprint(h, " library hash interface")
+	sum1 := h.Sum16()
+	h.Reset()
+	fmt.Fprint(h, "standard library hash interface")
+	sum2 := h.Sum16()
+
+	if sum1 != sum2 {
+		t.Errorf("CRC16 checksums for chunked input %x should be equal %x", sum1, sum2)
+	}
+
+	var crc uint16 = 0xe698
+	if sum1 != crc {
+		t.Errorf("CRC16 for input should equal %x but was %x", crc, sum1)
+	}
+
+	if h.Size() != 2 {
+		t.Errorf("CRC16 checksum should have a size of 2 byte. But was %d", h.Size())
+	}
+	buf := make([]byte, 0, 10)
+	buf = h.Sum(buf)
+	expected := []byte{0xe6, 0x98}
+	if len(buf) != 2 || buf[0] != expected[0] || buf[1] != expected[1] {
+		t.Errorf("CRC16 checksum should append %v to slice, but was %v", expected, buf)
+	}
+
+	// for the 100% test coverage
+	if h.BlockSize() != 1 {
+		t.Errorf("Block size should return 1")
+	}
 }
