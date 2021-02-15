@@ -1,4 +1,5 @@
 // Package crc16 implements the 16-bit cyclic redundancy check, or CRC-16, checksum.
+//
 // It provides parameters for the majority of well-known CRC-16 algorithms.
 package crc16
 
