@@ -96,7 +96,7 @@ func Complete(crc uint16, table *Table) uint16 {
 	return crc ^ table.params.XorOut
 }
 
-// Checksum returns CRC checksum of data usign scpecified algorithm represented by the Table.
+// Checksum returns CRC checksum of data using scpecified algorithm represented by the Table.
 func Checksum(data []byte, table *Table) uint16 {
 	crc := Init(table)
 	crc = Update(crc, data, table)
